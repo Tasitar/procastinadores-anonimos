@@ -1,0 +1,444 @@
+/* --- Reseteo Básico y Variables Globales --- */
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --accent-color: #ff6584;
+    --dark-text: #333;
+    --light-text: #f4f4f4;
+    --background-color: #ffffff;
+    --section-dark-bg: #1e1e2f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark-text);
+    background-color: var(--background-color);
+    line-height: 1.6;
+}
+
+/* --- Estructura y Contenedores --- */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- Animaciones de Entrada --- */
+.content-section, .features-section, .cta-section, .content-section-dark {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Header y Navegación --- */
+.main-header {
+    background: white;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: background 0.3s ease;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.main-nav a {
+    color: var(--dark-text);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.4s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+
+/* --- Sección Hero --- */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--light-text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 80px; /* Espacio para el header fijo */
+}
+
+.hero-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-weight: 300;
+    animation: fadeInUp 1s ease-out 0.5s;
+    animation-fill-mode: backwards;
+}
+
+/* --- Botones --- */
+.cta-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.cta-button-secondary {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 13px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.cta-button-secondary:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+
+/* --- Secciones de Contenido --- */
+.content-section, .features-section, .cta-section, .content-section-dark {
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.content-section-dark {
+    background: var(--section-dark-bg);
+    color: var(--light-text);
+}
+
+section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+section p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+
+/* --- Sección de Características --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    text-align: left;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.feature-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+}
+
+.feature-card .icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+
+/* --- Footer --- */
+.main-footer {
+    background: var(--dark-text);
+    color: var(--light-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+/* --- Animaciones Keyframes --- */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 101, 132, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(255, 101, 132, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 101, 132, 0);
+    }
+}
+
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .main-nav {
+        display: none; /* Simplificación para el ejemplo, se podría implementar un menú hamburguesa */
+    }
+}
+
+
+/* --- ESTILOS PARA LA PÁGINA DE REGISTRO --- */
+/* --- Añadir al final del archivo style.css --- */
+
+.registration-body {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.registration-container {
+    background-color: var(--background-color);
+    width: 90%;
+    max-width: 450px;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.registration-header .logo {
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.registration-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark-text);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.registration-header p {
+    color: #666;
+    margin-bottom: 2.5rem;
+}
+
+.registration-form {
+    text-align: left;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark-text);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
+}
+
+.terms-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.terms-group input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+}
+
+.terms-group a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.terms-group a:hover {
+    text-decoration: underline;
+}
+
+.cta-button.full-width {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    animation: none; /* Quitamos la animación de pulso para este botón */
+}
+
+.login-link {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+.login-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- ESTILO PARA EL BOTÓN DE REGISTRO EN LA NAVEGACIÓN --- */
+
+.main-nav .nav-button {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.main-nav .nav-button:hover {
+    color: white; /* Aseguramos que el texto siga blanco */
+    transform: translateY(-2px);
+    background: var(--secondary-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Evita que aparezca la línea animada debajo del botón */
+.main-nav .nav-button::after {
+    content: none;
+}
+
+/* --- ESTILOS PARA EL ENLACE 'OLVIDÉ CONTRASEÑA' --- */
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.forgot-password a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
