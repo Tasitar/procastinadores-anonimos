@@ -803,3 +803,85 @@ input:checked + .slider:before {
     border-top: 1px dashed var(--border-color);
     margin-top: 10px;
 }
+
+/* --- Estilos para la Pantalla de Gestionar Mis Tarjetas --- */
+
+/* Contenedor principal de la lista de tarjetas */
+#listaTarjetas {
+    margin-top: 20px;
+    background-color: var(--card-background-color); /* Usa el mismo fondo que las tarjetas de estudio */
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-height: 500px; /* Limita la altura para habilitar el scroll si hay muchas tarjetas */
+    overflow-y: auto; /* Permite el scroll vertical */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre cada ítem de tarjeta */
+}
+
+/* Estilo para cada tarjeta individual en la lista de gestión */
+.gestion-card-item {
+    display: flex;
+    justify-content: space-between; /* Alinea los detalles a la izquierda y el botón a la derecha */
+    align-items: center; /* Centra verticalmente los elementos */
+    background-color: var(--secondary-background-color); /* Un color ligeramente diferente para los ítems */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sombra sutil para cada ítem */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    gap: 15px; /* Espacio entre los detalles y el botón */
+}
+
+/* Estilos para los detalles del texto dentro de cada tarjeta de gestión */
+.gestion-card-item .card-details {
+    flex-grow: 1; /* Permite que los detalles ocupen la mayor parte del espacio */
+    min-width: 200px; /* Asegura un ancho mínimo para los detalles antes de envolver */
+}
+
+.gestion-card-item h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--accent-color); /* Color para el ID de la tarjeta */
+    font-size: 1.2em;
+}
+
+.gestion-card-item p {
+    margin: 5px 0;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.gestion-card-item p strong {
+    color: var(--primary-color); /* Color para las etiquetas fuertes como "Pregunta:" */
+}
+
+/* Estilo para el botón de eliminar */
+.delete-card-button {
+    background-color: #dc3545; /* Rojo vivo para indicar acción de eliminar */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background-color 0.3s ease; /* Transición suave al pasar el mouse */
+    white-space: nowrap; /* Evita que el texto del botón se rompa en varias líneas */
+}
+
+.delete-card-button:hover {
+    background-color: #c82333; /* Rojo más oscuro al pasar el mouse */
+}
+
+/* Mensaje cuando no hay tarjetas para gestionar */
+.no-cards-message {
+    text-align: center;
+    color: var(--text-color);
+    font-size: 1.1em;
+    padding: 20px;
+    background-color: var(--secondary-background-color);
+    border-radius: var(--border-radius);
+    margin-top: 20px; /* Espacio superior para separarlo si es el único contenido */
+}

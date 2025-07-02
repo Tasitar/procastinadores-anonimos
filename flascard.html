@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P.A. | Metodología de Estudio</title>
-    <link rel="stylesheet" href="assets/style.css"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -32,6 +33,7 @@
                 <button id="btnComenzarSesion" class="cta-button">Comenzar Sesión Rápida</button>
                 <button id="btnConfiguracion" class="cta-button-secondary">Configuración Avanzada</button>
                 <button id="btnCrearTarjeta" class="cta-button-secondary">Crear Nueva Tarjeta</button>
+                <button id="btnGestionarTarjetas" class="cta-button-secondary">Gestionar Mis Tarjetas</button>
             </section>
 
             <section id="crear-tarjeta-screen" class="screen hidden">
@@ -63,6 +65,13 @@
                     <button type="submit" class="cta-button">Guardar Tarjeta</button>
                     <button type="button" id="btnCancelarCreacion" class="cta-button-secondary">Cancelar</button>
                 </form>
+            </section>
+            <section id="gestionar-tarjetas-screen" class="screen hidden">
+                <h2>Gestionar Mis Tarjetas</h2>
+                <div id="listaTarjetas" class="tarjetas-list">
+                    <p class="no-cards-message hidden">No hay tarjetas para gestionar. ¡Crea algunas primero!</p>
+                </div>
+                <button id="btnVolverDesdeGestion" class="cta-button-secondary">Volver</button>
             </section>
             <section id="estudio-configuracion-screen" class="screen hidden">
                 <h2>Configurar Sesión de Estudio</h2>

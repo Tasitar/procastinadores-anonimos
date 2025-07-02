@@ -250,7 +250,7 @@ function finalizarSesion() {
     mostrarPantalla('estudio-inicio-screen');
 }
 
-// --- 6. Lógica para Crear Tarjetas (¡Nueva funcionalidad!) ---
+// --- 6. Lógica para Crear y Gestionar Tarjetas ---
 const btnCrearTarjeta = document.getElementById('btnCrearTarjeta');
 const formCrearTarjeta = document.getElementById('formCrearTarjeta');
 const tipoRespuestaCrear = document.getElementById('tipoRespuestaCrear');
@@ -260,10 +260,70 @@ const preguntaInput = document.getElementById('preguntaInput');
 const respuestaCorrectaInput = document.getElementById('respuestaCorrectaInput');
 const btnCancelarCreacion = document.getElementById('btnCancelarCreacion');
 
+// NUEVOS ELEMENTOS PARA GESTIONAR
+const btnGestionarTarjetas = document.getElementById('btnGestionarTarjetas');
+const listaTarjetasContenedor = document.getElementById('listaTarjetas');
+const noCardsMessage = listaTarjetasContenedor.querySelector('.no-cards-message');
+const btnVolverDesdeGestion = document.getElementById('btnVolverDesdeGestion');
+
+
 // Función para guardar el array de tarjetas en el localStorage del navegador
 function guardarTarjetasEnLocalStorage() {
     localStorage.setItem('flashcardsPA', JSON.stringify(todasLasTarjetas));
 }
+
+// NUEVA FUNCIÓN: Eliminar una Tarjeta por ID
+function eliminarTarjetaPorId(idAEliminar) {
+    // Confirmación antes de eliminar
+    if (!confirm("¿Estás seguro de que quieres eliminar esta tarjeta?")) {
+        return; // Si el usuario cancela, no hacemos nada
+    }
+
+    // Filtra el array, manteniendo solo las tarjetas cuyo ID no coincida con el que queremos borrar
+    todasLasTarjetas = todasLasTarjetas.filter(tarjeta => tarjeta.id !== idAEliminar);
+
+    // Guarda el array actualizado en localStorage
+    guardarTarjetasEnLocalStorage();
+
+    alert("Tarjeta eliminada con éxito.");
+    mostrarListaTarjetas(); // Vuelve a renderizar la lista para reflejar el cambio
+}
+
+// NUEVA FUNCIÓN: Mostrar la Lista de Tarjetas para Gestión
+function mostrarListaTarjetas() {
+    listaTarjetasContenedor.innerHTML = ''; // Limpiar la lista actual
+    listaTarjetasContenedor.appendChild(noCardsMessage); // Volver a añadir el mensaje de "no hay tarjetas"
+
+    if (todasLasTarjetas.length === 0) {
+        noCardsMessage.classList.remove('hidden');
+        return;
+    } else {
+        noCardsMessage.classList.add('hidden');
+    }
+
+    // Crear un div para cada tarjeta y añadir un botón de eliminar
+    todasLasTarjetas.forEach((tarjeta, index) => { // <-- ¡Aquí se añadió 'index'!
+        const tarjetaDiv = document.createElement('div');
+        tarjetaDiv.classList.add('gestion-card-item'); // Clase para estilos CSS
+
+        tarjetaDiv.innerHTML = `
+            <div class="card-details">
+                <h3>Tarjeta ${index + 1}</h3> <p><strong>Pregunta:</strong> ${tarjeta.pregunta}</p>
+                <p><strong>Respuesta:</strong> ${tarjeta.respuestaCorrecta}</p>
+                <p><strong>Tipo:</strong> ${tarjeta.tipoRespuesta === 'texto' ? 'Texto Libre' : 'Opción Múltiple'}</p>
+                ${tarjeta.opciones ? `<p><strong>Opciones:</strong> ${tarjeta.opciones.join(', ')}</p>` : ''}
+            </div>
+            <button class="delete-card-button" data-id="${tarjeta.id}">Eliminar</button>
+        `;
+
+        // Añadir el event listener al botón de eliminar dentro de este bucle
+        const deleteButton = tarjetaDiv.querySelector('.delete-card-button');
+        deleteButton.addEventListener('click', () => eliminarTarjetaPorId(tarjeta.id));
+
+        listaTarjetasContenedor.appendChild(tarjetaDiv);
+    });
+}
+
 
 // Manejar el cambio en el tipo de respuesta (texto vs selección) para mostrar/ocultar opciones
 tipoRespuestaCrear.addEventListener('change', () => {
@@ -335,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mostrarPantalla('estudio-configuracion-screen');
     });
 
-    // Event listener para el nuevo botón "Crear Nueva Tarjeta"
+    // Event listener para el botón "Crear Nueva Tarjeta"
     btnCrearTarjeta.addEventListener('click', () => {
         // Reiniciar el formulario de creación al abrirlo
         formCrearTarjeta.reset();
@@ -345,6 +405,11 @@ document.addEventListener('DOMContentLoaded', () => {
         mostrarPantalla('crear-tarjeta-screen');
     });
 
+    // NUEVO Event listener para el botón "Gestionar Mis Tarjetas"
+    btnGestionarTarjetas.addEventListener('click', () => {
+        mostrarListaTarjetas(); // Carga y muestra la lista de tarjetas al abrir la pantalla
+        mostrarPantalla('gestionar-tarjetas-screen');
+    });
 
     // --- Botones de la Pantalla de Configuración ---
     const toggleTemporizador = document.getElementById('toggleTemporizador');
@@ -369,6 +434,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Botones de la Pantalla de Creación ---
     btnCancelarCreacion.addEventListener('click', () => {
         mostrarPantalla('estudio-inicio-screen'); // Vuelve a la pantalla de inicio
+    });
+
+    // NUEVO Botón para volver desde la pantalla de Gestión de Tarjetas
+    btnVolverDesdeGestion.addEventListener('click', () => {
+        mostrarPantalla('estudio-inicio-screen');
     });
 
 
