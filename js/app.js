@@ -11,8 +11,8 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(morgan("dev"));
 sequelize.authenticate
-app.use("/api", usuarioroutes)
-
+app.use("/api", usuarioroutes);
+app.use("/datos", usuarioroutes);
 
 app.listen(PORT, async () =>{
     await startOn();
