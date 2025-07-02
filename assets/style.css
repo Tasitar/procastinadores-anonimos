@@ -442,3 +442,364 @@ section p {
 .forgot-password a:hover {
     text-decoration: underline;
 }
+
+/* ESTO ES DE LAS FLASCARD *//* ESTO ES DE LAS FLASCARD *//* ESTO ES DE LAS FLASCARD *//* ESTO ES DE LAS FLASCARD *//* ESTO ES DE LAS FLASCARD */
+
+/* --- ESTILOS PARA LA FUNCIONALIDAD DE METODOLOGÍA DE ESTUDIO --- */
+
+.estudio-body {
+    /* Si esta funcionalidad va en una página separada, podrías centrarlo así: */
+    display: flex;
+    flex-direction: column; /* Para que header, main y footer se apilen */
+    min-height: 100vh;
+    background-color: var(--background-color); /* Usar tu color de fondo principal */
+}
+
+.estudio-main {
+    flex-grow: 1; /* Permite que el contenido principal ocupe el espacio restante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px 40px; /* Espacio para el header y abajo */
+    text-align: center;
+}
+
+.estudio-container {
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada para el contenedor principal */
+    background-color: #fff;
+    width: 100%;
+    max-width: 700px; /* Un poco más ancho que el registro, pero menos que el principal */
+}
+
+/* Pantallas (Secciones) de la funcionalidad */
+.screen {
+    display: none; /* Por defecto todas ocultas */
+    animation: fadeIn 0.5s ease-out; /* Tu animación existente */
+}
+
+.screen.active {
+    display: block; /* Solo la pantalla activa se muestra */
+}
+
+.screen.hidden {
+    display: none;
+}
+
+/* Títulos específicos de esta funcionalidad */
+#estudio-inicio-screen h1,
+#estudio-configuracion-screen h2,
+#estudio-sesion-screen h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color); /* Usar tu color primario */
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+}
+
+#estudio-inicio-screen p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+/* Botones principales de la funcionalidad (ya usan cta-button/cta-button-secondary) */
+#estudio-inicio-screen .cta-button,
+#estudio-configuracion-screen .cta-button,
+#estudio-configuracion-screen .cta-button-secondary {
+    margin: 10px auto; /* Centrar y dar espacio */
+    display: block; /* Para que ocupen su propia línea */
+    max-width: 300px; /* Limitar el ancho */
+}
+
+/* Configuración Avanzada */
+.setting-group {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espacio entre label e input/switch */
+}
+
+.setting-group label {
+    font-weight: 600; /* Usar el peso de fuente de Poppins */
+    color: var(--dark-text);
+}
+
+.setting-group input[type="number"] {
+    width: 100px; /* Tamaño fijo para los números */
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.setting-group input[type="number"]:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2); /* Sombra con tu secondary color */
+}
+
+/* Estilo para el Toggle Switch (Interruptor) - Manteniendo el tuyo */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: var(--primary-color); /* Tu primary color */
+}
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--primary-color);
+}
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Sesión de Estudio */
+.sesion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    color: #666;
+    flex-wrap: wrap; /* Para que se ajuste en móviles */
+    gap: 10px;
+}
+
+.timer-display {
+    font-weight: 700;
+    color: var(--accent-color); /* Tu color de acento para el temporizador */
+    font-size: 1.4rem;
+}
+
+.card-counter {
+    font-weight: 600;
+}
+
+.card-estudio { /* Reutiliza feature-card y le damos toques extra */
+    padding: 35px 25px;
+    min-height: 200px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-estudio h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: var(--dark-text);
+}
+
+.response-area {
+    display: flex;
+    flex-direction: column; /* Apilar opciones una debajo de otra */
+    gap: 15px;
+    width: 100%;
+    max-width: 400px; /* Limitar ancho de opciones/textarea */
+    margin-bottom: 20px;
+}
+
+.response-area button.opcion-respuesta { /* Estilo para los botones de opción */
+    background-color: #f0f0f0; /* Un gris claro neutro */
+    color: var(--dark-text);
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    width: 100%; /* Ocupar todo el ancho disponible */
+}
+
+.response-area button.opcion-respuesta:hover {
+    background-color: var(--secondary-color); /* Tu color secundario al pasar el mouse */
+    color: white;
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 117, 252, 0.2);
+}
+
+.response-area textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.response-area textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2);
+}
+
+.correct-answer {
+    color: #28a745; /* Un verde estándar para el éxito */
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.card-navigation {
+    display: flex;
+    justify-content: center; /* Centrar los botones de navegación */
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Para que los botones se ajusten en móviles */
+}
+
+/* Ajustes para el botón "Terminar Sesión" */
+.end-session-button {
+    background-color: #dc3545; /* Un rojo para "terminar" */
+    color: white;
+    border: none;
+}
+
+.end-session-button:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Utilidad para ocultar/mostrar elementos con JS */
+.hidden {
+    display: none !important;
+}
+
+/* Media Queries para Responsividad específica de la funcionalidad */
+@media (max-width: 600px) {
+    .estudio-container {
+        padding: 20px;
+    }
+    #estudio-inicio-screen h1,
+    #estudio-configuracion-screen h2,
+    #estudio-sesion-screen h2 {
+        font-size: 1.8rem;
+    }
+    .sesion-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .response-area {
+        max-width: 100%;
+    }
+    .card-navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card-navigation button {
+        width: 100%;
+    }
+}
+/* --- Estilos para la Pantalla de Creación de Tarjetas --- */
+
+/* Contenedor general del formulario */
+#crear-tarjeta-screen form {
+    background-color: var(--card-background-color); /* Color de fondo similar a las tarjetas de estudio */
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 600px;
+    margin: 30px auto; /* Centra el formulario y le da margen superior/inferior */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre los grupos de input */
+}
+
+/* Estilos para cada grupo de input (label + input/textarea/select) */
+#crear-tarjeta-screen .input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+#crear-tarjeta-screen .input-group label {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+/* Estilos para los campos de texto, textarea y select */
+#crear-tarjeta-screen input[type="text"],
+#crear-tarjeta-screen textarea,
+#crear-tarjeta-screen select {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    font-size: 1em;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+    background-color: var(--input-background);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+#crear-tarjeta-screen input[type="text"]:focus,
+#crear-tarjeta-screen textarea:focus,
+#crear-tarjeta-screen select:focus {
+    border-color: var(--accent-color); /* Color al enfocar */
+    outline: none;
+}
+
+#crear-tarjeta-screen textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 80px; /* Altura mínima */
+}
+
+/* Espaciado para el grupo de botones al final del formulario */
+#crear-tarjeta-screen .cta-button,
+#crear-tarjeta-screen .cta-button-secondary {
+    margin-top: 10px; /* Espacio entre los botones y el último input */
+}
+
+/* Asegura que el contenedor de opciones se vea bien cuando está visible */
+#opcionesContainer {
+    /* No se necesita CSS extra aquí si ya tienes .hidden */
+    /* Pero puedes añadir algo específico si quieres, por ejemplo: */
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-color);
+    margin-top: 10px;
+}
