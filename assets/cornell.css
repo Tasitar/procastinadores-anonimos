@@ -1,0 +1,189 @@
+/* assets/cornell.css */
+
+#metodo-cornell-screen {
+    /* Estilos de "tarjeta grande" para la sección principal */
+    padding: 30px;
+    background-color: var(--card-background-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Espacio entre los elementos de la pantalla */
+
+    width: 100%;
+    max-width: 960px; /* Ancho máximo similar al contenedor principal */
+    
+    /* Ajuste para que el contenido no se superponga con el header */
+    margin: 30px auto 0 auto; /* Margen superior para empujar el contenido */
+    padding-top: 80px; /* Espacio interno superior para el header */
+    /* Ajusta 'padding-top' si tu header es más alto o más bajo.
+       80px es un buen punto de partida si tu header es de unos 60-70px de alto. */
+}
+
+#metodo-cornell-screen h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    text-align: center;
+}
+
+#metodo-cornell-screen .guia-metodo {
+    font-size: 1.1em;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.configuracion-opciones {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+    justify-content: center;
+}
+
+.cornell-layout {
+    width: 100%;
+    max-width: 900px; /* Ancho máximo para el layout interno */
+    border: 1px solid var(--border-color); /* Borde sutil como las tarjetas */
+    border-radius: var(--border-radius); /* Bordes redondeados */
+    overflow: hidden; 
+    display: grid; /* Usaremos Grid para los layouts */
+    gap: 1px; /* Pequeño espacio para simular líneas de división */
+    background-color: var(--border-color); /* Color de las líneas de división */
+    min-height: 500px; /* Altura mínima para que la estructura se vea bien */
+    box-shadow: var(--box-shadow); /* Sombra para dar profundidad como las tarjetas */
+}
+
+/* Estilos de los paneles individuales (las "cajas" de texto) */
+.cornell-panel {
+    background-color: var(--secondary-background-color); /* Fondo de un color secundario de tu paleta */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cornell-panel h3 {
+    color: var(--accent-color); /* Color de acento para los títulos de sección */
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    text-align: center;
+    border-bottom: 1px dashed var(--border-color); /* Línea divisoria sutil bajo el título */
+    padding-bottom: 5px;
+    opacity: 0.8; /* Hace el título un poco más suave */
+}
+
+.cornell-panel textarea {
+    width: 100%;
+    flex-grow: 1; /* Permite que el textarea ocupe el espacio restante */
+    padding: 10px;
+    border: 1px solid var(--border-color); /* Borde sutil como inputs */
+    border-radius: var(--border-radius-small); /* Bordes redondeados pequeños */
+    font-family: 'Poppins', sans-serif; /* Asegúrate de que esta fuente esté importada en style.css */
+    font-size: 1em;
+    resize: vertical; /* Permite al usuario redimensionar verticalmente */
+    min-height: 100px;
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+    background-color: var(--input-background); /* Fondo suave para el área de escritura */
+    color: var(--text-color); /* Color de texto estándar */
+}
+
+/* --- Layout 1: Predeterminado (3 Columnas Iguales) --- */
+.cornell-layout.layout-1 {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual ancho */
+    grid-template-rows: 1fr; /* Una sola fila */
+}
+
+/* --- Layout 2: Alternativo (2 Cuadrados + Rectángulo) --- */
+.cornell-layout.layout-2 {
+    grid-template-columns: 1fr 1fr; /* Dos columnas para los cuadrados superiores */
+    grid-template-rows: 3fr 1fr; /* Fila superior más grande (3 partes), fila inferior más pequeña (1 parte) */
+}
+
+.cornell-layout.layout-2 .cornell-panel:nth-child(1) { /* Notas Detalladas (primer panel) */
+    grid-column: 1 / 2; /* Ocupa la primera columna */
+    grid-row: 1 / 2;     /* Ocupa la primera fila */
+}
+
+.cornell-layout.layout-2 .cornell-panel:nth-child(2) { /* Palabras Clave (segundo panel) */
+    grid-column: 2 / 3; /* Ocupa la segunda columna */
+    grid-row: 1 / 2;     /* Ocupa la primera fila */
+}
+
+.cornell-layout.layout-2 .cornell-panel:nth-child(3) { /* Resumen (tercer panel) */
+    grid-column: 1 / 3; /* Ocupa ambas columnas */
+    grid-row: 2 / 3;     /* Ocupa la segunda fila */
+}
+
+/* Guía de texto debajo del layout */
+.cornell-guia {
+    background-color: var(--card-background-color); /* Fondo de tarjeta */
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow); /* Sombra de tarjeta */
+    width: 100%;
+    max-width: 900px; /* Ancho máximo */
+    text-align: left;
+    margin-top: 30px; /* Espacio con el layout superior */
+}
+
+.cornell-guia strong {
+    color: var(--primary-color); /* Color primario para el texto en negrita */
+}
+
+.cornell-guia p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+.cornell-guia .guia-item {
+    padding-left: 15px;
+    position: relative;
+}
+
+/* --- Ajustes para pantallas más pequeñas (Responsive Design) --- */
+@media (max-width: 768px) {
+    .configuracion-opciones {
+        flex-direction: column; /* Apila los botones de configuración */
+    }
+
+    .cornell-layout.layout-1 {
+        grid-template-columns: 1fr; /* Una columna para layout 1 en móviles */
+        grid-template-rows: repeat(3, auto); /* Altura automática para cada panel */
+    }
+
+    .cornell-layout.layout-2 {
+        grid-template-columns: 1fr; /* Una columna para layout 2 en móviles */
+        grid-template-rows: repeat(3, auto); /* Altura automática para los paneles */
+    }
+
+    /* Restablece la posición de los paneles para que se apilen correctamente en móviles */
+    .cornell-layout.layout-2 .cornell-panel:nth-child(1),
+    .cornell-layout.layout-2 .cornell-panel:nth-child(2),
+    .cornell-layout.layout-2 .cornell-panel:nth-child(3) {
+        grid-column: auto; /* Desactiva la asignación de columna específica */
+        grid-row: auto;     /* Desactiva la asignación de fila específica */
+    }
+
+    /* Ajuste de márgenes para la pantalla del método Cornell en tabletas */
+    #metodo-cornell-screen {
+        margin: 20px auto; /* Menos margen superior en pantallas más pequeñas */
+        padding: 20px; /* Menos padding en pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    #metodo-cornell-screen {
+        padding: 15px; /* Más compacto en teléfonos pequeños */
+    }
+    .cornell-panel textarea {
+        min-height: 80px; /* Textareas un poco más pequeños */
+    }
+    #metodo-cornell-screen h2 {
+        font-size: 1.8em; /* Título un poco más pequeño */
+    }
+}

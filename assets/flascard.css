@@ -1,11 +1,12 @@
-/* --- ESTILOS PARA LA FUNCIONALIDAD DE METODOLOGÍA DE ESTUDIO --- */
+/* assets/flashcard.css */
+
+/* --- ESTILOS PARA LA FUNCIONALIDAD DE METODOLOGÍA DE ESTUDIO (Flashcards) --- */
 
 .estudio-body {
-    /* Si esta funcionalidad va en una página separada, podrías centrarlo así: */
     display: flex;
     flex-direction: column; /* Para que header, main y footer se apilen */
     min-height: 100vh;
-    background-color: var(--background-color); /* Usar tu color de fondo principal */
+    background-color: var(--background-color); /* Usa tu color de fondo principal */
 }
 
 .estudio-main {
@@ -19,9 +20,9 @@
 
 .estudio-container {
     padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada para el contenedor principal */
-    background-color: #fff;
+    border-radius: var(--border-radius); /* Usamos la variable global */
+    box-shadow: var(--box-shadow); /* Usamos la variable global */
+    background-color: var(--card-background-color); /* Usamos la variable global */
     width: 100%;
     max-width: 700px; /* Un poco más ancho que el registro, pero menos que el principal */
 }
@@ -44,7 +45,7 @@
 #estudio-inicio-screen h1,
 #estudio-configuracion-screen h2,
 #estudio-sesion-screen h2 {
-    font-family: 'Montserrat', sans-serif;
+    /* Font family heredada de style.css para h1, h2 */
     color: var(--primary-color); /* Usar tu color primario */
     margin-bottom: 25px;
     font-size: 2.2rem;
@@ -53,7 +54,7 @@
 #estudio-inicio-screen p {
     font-size: 1.1rem;
     margin-bottom: 40px;
-    color: #666;
+    color: var(--light-text); /* Usamos la variable global */
 }
 
 /* Botones principales de la funcionalidad (ya usan cta-button/cta-button-secondary) */
@@ -82,18 +83,20 @@
 .setting-group input[type="number"] {
     width: 100px; /* Tamaño fijo para los números */
     padding: 10px 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: 1px solid var(--border-color); /* Usamos la variable global */
+    border-radius: var(--border-radius-small); /* Usamos la variable global */
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
     text-align: center;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--input-background); /* Fondo para inputs */
+    color: var(--text-color);
 }
 
 .setting-group input[type="number"]:focus {
     outline: none;
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2); /* Sombra con tu secondary color */
+    border-color: var(--accent-color); /* Sombra con tu secondary color */
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2); /* Usa el color de acento */
 }
 
 /* Estilo para el Toggle Switch (Interruptor) - Manteniendo el tuyo */
@@ -151,7 +154,7 @@ input:checked + .slider:before {
     align-items: center;
     margin-bottom: 25px;
     font-size: 1.1rem;
-    color: #666;
+    color: var(--light-text); /* Usamos la variable global */
     flex-wrap: wrap; /* Para que se ajuste en móviles */
     gap: 10px;
 }
@@ -174,6 +177,7 @@ input:checked + .slider:before {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* Ya hereda de .feature-card en style.css: background-color, border-radius, box-shadow, etc. */
 }
 
 .card-estudio h2 {
@@ -192,11 +196,11 @@ input:checked + .slider:before {
 }
 
 .response-area button.opcion-respuesta { /* Estilo para los botones de opción */
-    background-color: #f0f0f0; /* Un gris claro neutro */
+    background-color: var(--input-background); /* Un gris claro neutro */
     color: var(--dark-text);
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     padding: 12px 20px;
-    border-radius: 8px;
+    border-radius: var(--border-radius-small);
     font-size: 1.05rem;
     font-weight: 400;
     transition: all 0.3s ease;
@@ -204,33 +208,35 @@ input:checked + .slider:before {
 }
 
 .response-area button.opcion-respuesta:hover {
-    background-color: var(--secondary-color); /* Tu color secundario al pasar el mouse */
-    color: white;
-    border-color: var(--secondary-color);
+    background-color: var(--accent-color); /* Tu color secundario al pasar el mouse */
+    color: var(--cta-button-text); /* Texto blanco en el botón de hover */
+    border-color: var(--accent-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(37, 117, 252, 0.2);
+    box-shadow: 0 4px 10px rgba(33, 150, 243, 0.2); /* Sombra con tu color de acento */
 }
 
 .response-area textarea {
     width: 100%;
     min-height: 120px;
     padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
     resize: vertical;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--input-background); /* Fondo para inputs */
+    color: var(--text-color);
 }
 
 .response-area textarea:focus {
     outline: none;
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
 }
 
 .correct-answer {
-    color: #28a745; /* Un verde estándar para el éxito */
+    color: var(--primary-color); /* Tu verde estándar para el éxito */
     font-weight: 600;
     margin-top: 20px;
     font-size: 1.1rem;
@@ -247,46 +253,16 @@ input:checked + .slider:before {
 
 /* Ajustes para el botón "Terminar Sesión" */
 .end-session-button {
-    background-color: #dc3545; /* Un rojo para "terminar" */
-    color: white;
+    background-color: var(--error-color); /* Un rojo para "terminar" */
+    color: var(--cta-button-text);
     border: none;
 }
 
 .end-session-button:hover {
-    background-color: #c82333;
+    background-color: #c82333; /* Rojo más oscuro al pasar el mouse */
     transform: translateY(-2px);
 }
 
-/* Utilidad para ocultar/mostrar elementos con JS */
-.hidden {
-    display: none !important;
-}
-
-/* Media Queries para Responsividad específica de la funcionalidad */
-@media (max-width: 600px) {
-    .estudio-container {
-        padding: 20px;
-    }
-    #estudio-inicio-screen h1,
-    #estudio-configuracion-screen h2,
-    #estudio-sesion-screen h2 {
-        font-size: 1.8rem;
-    }
-    .sesion-header {
-        flex-direction: column;
-        align-items: center;
-    }
-    .response-area {
-        max-width: 100%;
-    }
-    .card-navigation {
-        flex-direction: column;
-        align-items: center;
-    }
-    .card-navigation button {
-        width: 100%;
-    }
-}
 /* --- Estilos para la Pantalla de Creación de Tarjetas --- */
 
 /* Contenedor general del formulario */
@@ -311,7 +287,7 @@ input:checked + .slider:before {
 #crear-tarjeta-screen .input-group label {
     font-size: 1.1em;
     margin-bottom: 8px;
-    color: var(--text-color);
+    color: var(--dark-text); /* Usamos el color de texto oscuro */
     font-weight: bold;
 }
 
@@ -350,8 +326,6 @@ input:checked + .slider:before {
 
 /* Asegura que el contenedor de opciones se vea bien cuando está visible */
 #opcionesContainer {
-    /* No se necesita CSS extra aquí si ya tienes .hidden */
-    /* Pero puedes añadir algo específico si quieres, por ejemplo: */
     padding-top: 10px;
     border-top: 1px dashed var(--border-color);
     margin-top: 10px;
@@ -412,8 +386,8 @@ input:checked + .slider:before {
 
 /* Estilo para el botón de eliminar */
 .delete-card-button {
-    background-color: #dc3545; /* Rojo vivo para indicar acción de eliminar */
-    color: white;
+    background-color: var(--error-color); /* Rojo vivo para indicar acción de eliminar */
+    color: var(--cta-button-text);
     border: none;
     padding: 8px 15px;
     border-radius: var(--border-radius-small);
@@ -437,4 +411,30 @@ input:checked + .slider:before {
     background-color: var(--secondary-background-color);
     border-radius: var(--border-radius);
     margin-top: 20px; /* Espacio superior para separarlo si es el único contenido */
+}
+
+/* Media Queries para Responsividad específica de la funcionalidad */
+@media (max-width: 600px) {
+    .estudio-container {
+        padding: 20px;
+    }
+    #estudio-inicio-screen h1,
+    #estudio-configuracion-screen h2,
+    #estudio-sesion-screen h2 {
+        font-size: 1.8rem;
+    }
+    .sesion-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .response-area {
+        max-width: 100%;
+    }
+    .card-navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card-navigation button {
+        width: 100%;
+    }
 }
