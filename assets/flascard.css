@@ -287,3 +287,154 @@ input:checked + .slider:before {
         width: 100%;
     }
 }
+/* --- Estilos para la Pantalla de Creación de Tarjetas --- */
+
+/* Contenedor general del formulario */
+#crear-tarjeta-screen form {
+    background-color: var(--card-background-color); /* Color de fondo similar a las tarjetas de estudio */
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 600px;
+    margin: 30px auto; /* Centra el formulario y le da margen superior/inferior */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre los grupos de input */
+}
+
+/* Estilos para cada grupo de input (label + input/textarea/select) */
+#crear-tarjeta-screen .input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+#crear-tarjeta-screen .input-group label {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+/* Estilos para los campos de texto, textarea y select */
+#crear-tarjeta-screen input[type="text"],
+#crear-tarjeta-screen textarea,
+#crear-tarjeta-screen select {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    font-size: 1em;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+    background-color: var(--input-background);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+#crear-tarjeta-screen input[type="text"]:focus,
+#crear-tarjeta-screen textarea:focus,
+#crear-tarjeta-screen select:focus {
+    border-color: var(--accent-color); /* Color al enfocar */
+    outline: none;
+}
+
+#crear-tarjeta-screen textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 80px; /* Altura mínima */
+}
+
+/* Espaciado para el grupo de botones al final del formulario */
+#crear-tarjeta-screen .cta-button,
+#crear-tarjeta-screen .cta-button-secondary {
+    margin-top: 10px; /* Espacio entre los botones y el último input */
+}
+
+/* Asegura que el contenedor de opciones se vea bien cuando está visible */
+#opcionesContainer {
+    /* No se necesita CSS extra aquí si ya tienes .hidden */
+    /* Pero puedes añadir algo específico si quieres, por ejemplo: */
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-color);
+    margin-top: 10px;
+}
+
+/* --- Estilos para la Pantalla de Gestionar Mis Tarjetas --- */
+
+/* Contenedor principal de la lista de tarjetas */
+#listaTarjetas {
+    margin-top: 20px;
+    background-color: var(--card-background-color); /* Usa el mismo fondo que las tarjetas de estudio */
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-height: 500px; /* Limita la altura para habilitar el scroll si hay muchas tarjetas */
+    overflow-y: auto; /* Permite el scroll vertical */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre cada ítem de tarjeta */
+}
+
+/* Estilo para cada tarjeta individual en la lista de gestión */
+.gestion-card-item {
+    display: flex;
+    justify-content: space-between; /* Alinea los detalles a la izquierda y el botón a la derecha */
+    align-items: center; /* Centra verticalmente los elementos */
+    background-color: var(--secondary-background-color); /* Un color ligeramente diferente para los ítems */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sombra sutil para cada ítem */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    gap: 15px; /* Espacio entre los detalles y el botón */
+}
+
+/* Estilos para los detalles del texto dentro de cada tarjeta de gestión */
+.gestion-card-item .card-details {
+    flex-grow: 1; /* Permite que los detalles ocupen la mayor parte del espacio */
+    min-width: 200px; /* Asegura un ancho mínimo para los detalles antes de envolver */
+}
+
+.gestion-card-item h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--accent-color); /* Color para el ID de la tarjeta */
+    font-size: 1.2em;
+}
+
+.gestion-card-item p {
+    margin: 5px 0;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.gestion-card-item p strong {
+    color: var(--primary-color); /* Color para las etiquetas fuertes como "Pregunta:" */
+}
+
+/* Estilo para el botón de eliminar */
+.delete-card-button {
+    background-color: #dc3545; /* Rojo vivo para indicar acción de eliminar */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    transition: background-color 0.3s ease; /* Transición suave al pasar el mouse */
+    white-space: nowrap; /* Evita que el texto del botón se rompa en varias líneas */
+}
+
+.delete-card-button:hover {
+    background-color: #c82333; /* Rojo más oscuro al pasar el mouse */
+}
+
+/* Mensaje cuando no hay tarjetas para gestionar */
+.no-cards-message {
+    text-align: center;
+    color: var(--text-color);
+    font-size: 1.1em;
+    padding: 20px;
+    background-color: var(--secondary-background-color);
+    border-radius: var(--border-radius);
+    margin-top: 20px; /* Espacio superior para separarlo si es el único contenido */
+}
