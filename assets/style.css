@@ -734,3 +734,69 @@ input:checked + .slider:before {
         width: 100%;
     }
 }
+.botones-secundarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Espacio entre botones */
+    margin-top: 20px;
+}
+
+#estudio-inicio-screen .cta-button-secondary {
+    display: block;
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+}
+/* --- PANTALLA PRINCIPAL DE FLASHCARDS: Botones uno debajo del otro --- */
+#estudio-inicio-screen .cta-button,
+#estudio-inicio-screen .cta-button-secondary {
+  display: block;
+  margin: 10px auto;
+  max-width: 280px;
+  width: 100%;
+}
+
+/* --- CREAR NUEVA TARJETA: formulario estilizado --- */
+#crear-tarjeta-screen form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: stretch;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#crear-tarjeta-screen .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#crear-tarjeta-screen textarea,
+#crear-tarjeta-screen input,
+#crear-tarjeta-screen select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#crear-tarjeta-screen textarea:focus,
+#crear-tarjeta-screen input:focus,
+#crear-tarjeta-screen select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
+}
+
+/* --- Botones en Crear Nueva Tarjeta --- */
+#crear-tarjeta-screen button[type="submit"],
+#crear-tarjeta-screen button[type="button"] {
+  max-width: 250px;
+  margin: 0 auto;
+}
