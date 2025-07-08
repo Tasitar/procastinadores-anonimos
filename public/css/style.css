@@ -1,0 +1,804 @@
+/* --- Reseteo Básico y Variables Globales --- */
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --accent-color: #ff6584;
+    --dark-text: #333;
+    --light-text: #f4f4f4;
+    --background-color: #ffffff;
+    --section-dark-bg: #1e1e2f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark-text);
+    background-color: var(--background-color);
+    line-height: 1.6;
+}
+
+/* --- Estructura y Contenedores --- */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- Animaciones de Entrada --- */
+.content-section, .features-section, .cta-section, .content-section-dark {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Header y Navegación --- */
+.main-header {
+    background: white;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: background 0.3s ease;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.main-nav a {
+    color: var(--dark-text);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.4s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+
+/* --- Sección Hero --- */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--light-text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 80px; /* Espacio para el header fijo */
+}
+
+.hero-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-weight: 300;
+    animation: fadeInUp 1s ease-out 0.5s;
+    animation-fill-mode: backwards;
+}
+
+/* --- Botones --- */
+.cta-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.cta-button-secondary {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 13px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.cta-button-secondary:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+
+/* --- Secciones de Contenido --- */
+.content-section, .features-section, .cta-section, .content-section-dark {
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.content-section-dark {
+    background: var(--section-dark-bg);
+    color: var(--light-text);
+}
+
+section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+section p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+
+/* --- Sección de Características --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    text-align: left;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.feature-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+}
+
+.feature-card .icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+
+/* --- Footer --- */
+.main-footer {
+    background: var(--dark-text);
+    color: var(--light-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+/* --- Animaciones Keyframes --- */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 101, 132, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(255, 101, 132, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 101, 132, 0);
+    }
+}
+
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .main-nav {
+        display: none; /* Simplificación para el ejemplo, se podría implementar un menú hamburguesa */
+    }
+}
+
+
+/* --- ESTILOS PARA LA PÁGINA DE REGISTRO --- */
+/* --- Añadir al final del archivo style.css --- */
+
+.registration-body {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.registration-container {
+    background-color: var(--background-color);
+    width: 90%;
+    max-width: 450px;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.registration-header .logo {
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.registration-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark-text);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.registration-header p {
+    color: #666;
+    margin-bottom: 2.5rem;
+}
+
+.registration-form {
+    text-align: left;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark-text);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
+}
+
+.terms-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.terms-group input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+}
+
+.terms-group a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.terms-group a:hover {
+    text-decoration: underline;
+}
+
+.cta-button.full-width {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    animation: none; /* Quitamos la animación de pulso para este botón */
+}
+
+.login-link {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+.login-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- ESTILO PARA EL BOTÓN DE REGISTRO EN LA NAVEGACIÓN --- */
+
+.main-nav .nav-button {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.main-nav .nav-button:hover {
+    color: white; /* Aseguramos que el texto siga blanco */
+    transform: translateY(-2px);
+    background: var(--secondary-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Evita que aparezca la línea animada debajo del botón */
+.main-nav .nav-button::after {
+    content: none;
+}
+
+/* --- ESTILOS PARA EL ENLACE 'OLVIDÉ CONTRASEÑA' --- */
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.forgot-password a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* ESTO ES DE LAS FLASCARD *//* ESTO ES DE LAS FLASCARD *//* ESTO ES DE LAS FLASCARD *//* ESTO ES DE LAS FLASCARD *//* ESTO ES DE LAS FLASCARD */
+
+/* --- ESTILOS PARA LA FUNCIONALIDAD DE METODOLOGÍA DE ESTUDIO --- */
+
+.estudio-body {
+    /* Si esta funcionalidad va en una página separada, podrías centrarlo así: */
+    display: flex;
+    flex-direction: column; /* Para que header, main y footer se apilen */
+    min-height: 100vh;
+    background-color: var(--background-color); /* Usar tu color de fondo principal */
+}
+
+.estudio-main {
+    flex-grow: 1; /* Permite que el contenido principal ocupe el espacio restante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px 40px; /* Espacio para el header y abajo */
+    text-align: center;
+}
+
+.estudio-container {
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada para el contenedor principal */
+    background-color: #fff;
+    width: 100%;
+    max-width: 700px; /* Un poco más ancho que el registro, pero menos que el principal */
+}
+
+/* Pantallas (Secciones) de la funcionalidad */
+.screen {
+    display: none; /* Por defecto todas ocultas */
+    animation: fadeIn 0.5s ease-out; /* Tu animación existente */
+}
+
+.screen.active {
+    display: block; /* Solo la pantalla activa se muestra */
+}
+
+.screen.hidden {
+    display: none;
+}
+
+/* Títulos específicos de esta funcionalidad */
+#estudio-inicio-screen h1,
+#estudio-configuracion-screen h2,
+#estudio-sesion-screen h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color); /* Usar tu color primario */
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+}
+
+#estudio-inicio-screen p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+/* Botones principales de la funcionalidad (ya usan cta-button/cta-button-secondary) */
+#estudio-inicio-screen .cta-button,
+#estudio-configuracion-screen .cta-button,
+#estudio-configuracion-screen .cta-button-secondary {
+    margin: 10px auto; /* Centrar y dar espacio */
+    display: block; /* Para que ocupen su propia línea */
+    max-width: 300px; /* Limitar el ancho */
+}
+
+/* Configuración Avanzada */
+.setting-group {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espacio entre label e input/switch */
+}
+
+.setting-group label {
+    font-weight: 600; /* Usar el peso de fuente de Poppins */
+    color: var(--dark-text);
+}
+
+.setting-group input[type="number"] {
+    width: 100px; /* Tamaño fijo para los números */
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.setting-group input[type="number"]:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2); /* Sombra con tu secondary color */
+}
+
+/* Estilo para el Toggle Switch (Interruptor) - Manteniendo el tuyo */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: var(--primary-color); /* Tu primary color */
+}
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--primary-color);
+}
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Sesión de Estudio */
+.sesion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    color: #666;
+    flex-wrap: wrap; /* Para que se ajuste en móviles */
+    gap: 10px;
+}
+
+.timer-display {
+    font-weight: 700;
+    color: var(--accent-color); /* Tu color de acento para el temporizador */
+    font-size: 1.4rem;
+}
+
+.card-counter {
+    font-weight: 600;
+}
+
+.card-estudio { /* Reutiliza feature-card y le damos toques extra */
+    padding: 35px 25px;
+    min-height: 200px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-estudio h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: var(--dark-text);
+}
+
+.response-area {
+    display: flex;
+    flex-direction: column; /* Apilar opciones una debajo de otra */
+    gap: 15px;
+    width: 100%;
+    max-width: 400px; /* Limitar ancho de opciones/textarea */
+    margin-bottom: 20px;
+}
+
+.response-area button.opcion-respuesta { /* Estilo para los botones de opción */
+    background-color: #f0f0f0; /* Un gris claro neutro */
+    color: var(--dark-text);
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    width: 100%; /* Ocupar todo el ancho disponible */
+}
+
+.response-area button.opcion-respuesta:hover {
+    background-color: var(--secondary-color); /* Tu color secundario al pasar el mouse */
+    color: white;
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 117, 252, 0.2);
+}
+
+.response-area textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.response-area textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2);
+}
+
+.correct-answer {
+    color: #28a745; /* Un verde estándar para el éxito */
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.card-navigation {
+    display: flex;
+    justify-content: center; /* Centrar los botones de navegación */
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Para que los botones se ajusten en móviles */
+}
+
+/* Ajustes para el botón "Terminar Sesión" */
+.end-session-button {
+    background-color: #dc3545; /* Un rojo para "terminar" */
+    color: white;
+    border: none;
+}
+
+.end-session-button:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+/* Utilidad para ocultar/mostrar elementos con JS */
+.hidden {
+    display: none !important;
+}
+
+/* Media Queries para Responsividad específica de la funcionalidad */
+@media (max-width: 600px) {
+    .estudio-container {
+        padding: 20px;
+    }
+    #estudio-inicio-screen h1,
+    #estudio-configuracion-screen h2,
+    #estudio-sesion-screen h2 {
+        font-size: 1.8rem;
+    }
+    .sesion-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .response-area {
+        max-width: 100%;
+    }
+    .card-navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card-navigation button {
+        width: 100%;
+    }
+}
+.botones-secundarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Espacio entre botones */
+    margin-top: 20px;
+}
+
+#estudio-inicio-screen .cta-button-secondary {
+    display: block;
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+}
+/* --- PANTALLA PRINCIPAL DE FLASHCARDS: Botones uno debajo del otro --- */
+#estudio-inicio-screen .cta-button,
+#estudio-inicio-screen .cta-button-secondary {
+  display: block;
+  margin: 10px auto;
+  max-width: 280px;
+  width: 100%;
+}
+
+/* --- CREAR NUEVA TARJETA: formulario estilizado --- */
+#crear-tarjeta-screen form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: stretch;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#crear-tarjeta-screen .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#crear-tarjeta-screen textarea,
+#crear-tarjeta-screen input,
+#crear-tarjeta-screen select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#crear-tarjeta-screen textarea:focus,
+#crear-tarjeta-screen input:focus,
+#crear-tarjeta-screen select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
+}
+
+/* --- Botones en Crear Nueva Tarjeta --- */
+#crear-tarjeta-screen button[type="submit"],
+#crear-tarjeta-screen button[type="button"] {
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+
