@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.A. | Metodología de Estudio</title>
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="estudio-body">
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">P.A</div>
+            <nav class="main-nav">
+                <a href="/#inicio">Inicio</a>
+                <a href="/cornell">cornell</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="estudio-main">
+        <div class="container estudio-container">
+            <section id="estudio-inicio-screen" class="screen active">
+                <h1>Flascard</h1>
+                <p>Elige cómo quieres empezar tu sesión de aprendizaje.</p>
+                <button id="btnComenzarSesion" class="cta-button">Comenzar Sesión Rápida</button>
+                <button id="btnConfiguracion" class="cta-button-secondary">Configuración Avanzada</button>
+                <button id="btnCrearTarjeta" class="cta-button-secondary">Crear Nueva Tarjeta</button>
+                <button id="btnGestionarTarjetas" class="cta-button-secondary">Gestionar Mis Tarjetas</button>
+            </section>
+
+            <section id="crear-tarjeta-screen" class="screen hidden">
+                <h2>Crear Nueva Tarjeta</h2>
+                <form id="formCrearTarjeta">
+                    <div class="input-group">
+                        <label for="preguntaInput">Pregunta:</label>
+                        <textarea id="preguntaInput" rows="3" placeholder="Escribe la pregunta aquí..." required></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="tipoRespuestaCrear">Tipo de respuesta:</label>
+                        <select id="tipoRespuestaCrear">
+                            <option value="texto">Respuesta Libre (Texto)</option>
+                            <option value="seleccion">Opción Múltiple</option>
+                        </select>
+                    </div>
+
+                    <div id="opcionesContainer" class="input-group hidden">
+                        <label>Opciones (separadas por coma):</label>
+                        <input type="text" id="opcionesInput" placeholder="Ej: Opción A, Opción B, Opción C">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="respuestaCorrectaInput">Respuesta Correcta:</label>
+                        <input type="text" id="respuestaCorrectaInput" placeholder="Escribe la respuesta correcta" required>
+                    </div>
+
+                    <button type="submit" class="cta-button">Guardar Tarjeta</button>
+                    <button type="button" id="btnCancelarCreacion" class="cta-button-secondary">Cancelar</button>
+                </form>
+            </section>
+            <section id="gestionar-tarjetas-screen" class="screen hidden">
+                <h2>Gestionar Mis Tarjetas</h2>
+                <div id="listaTarjetas" class="tarjetas-list">
+                    <p class="no-cards-message hidden">No hay tarjetas para gestionar. ¡Crea algunas primero!</p>
+                </div>
+                <button id="btnVolverDesdeGestion" class="cta-button-secondary">Volver</button>
+            </section>
+            <section id="estudio-configuracion-screen" class="screen hidden">
+                <h2>Configurar Sesión de Estudio</h2>
+
+                <div class="input-group setting-group">
+                    <label for="numTarjetas">Límite de tarjetas por sesión:</label>
+                    <input type="number" id="numTarjetas" value="10" min="1" max="50">
+                </div>
+
+                <div class="setting-group checkbox-group">
+                    <label for="toggleTemporizador">Activar temporizador:</label>
+                    <label class="switch">
+                        <input type="checkbox" id="toggleTemporizador">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div id="duracionTemporizadorGroup" class="input-group setting-group hidden">
+                    <label for="duracionTemporizador">Duración (minutos):</label>
+                    <input type="number" id="duracionTemporizador" value="5" min="1" max="60">
+                </div>
+
+                <button id="btnGuardarComenzar" class="cta-button">Guardar y Comenzar</button>
+                <button id="btnCancelarConfiguracion" class="cta-button-secondary">Cancelar</button>
+            </section>
+
+            <section id="estudio-sesion-screen" class="screen hidden">
+                <div class="sesion-header">
+                    <span id="temporizadorDisplay" class="timer-display hidden">00:00</span>
+                    <p class="card-counter">Tarjeta <span id="contadorActual">1</span> de <span id="contadorTotal">X</span></p>
+                </div>
+
+                <div class="feature-card card-estudio">
+                    <h2 id="preguntaTarjeta"></h2>
+                    <div id="areaRespuesta" class="response-area">
+                        </div>
+                    <button id="btnMostrarRespuesta" class="cta-button-secondary action-button">Mostrar Respuesta</button>
+                    <p id="respuestaCorrecta" class="correct-answer hidden"></p>
+                </div>
+                
+                <div class="card-navigation">
+                    <button id="btnSiguienteTarjeta" class="cta-button">Siguiente Tarjeta</button>
+                    <button id="btnTerminarSesion" class="secondary-button end-session-button">Terminar Sesión</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- <footer class="main-footer">
+        <div class="container">
+        </div>
+    </footer> -->
+
+    <script src="../../public/js/flascard.js"></script>
+</body>
+</html>
